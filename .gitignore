@@ -1,0 +1,7 @@
+# vs related
+build
+.vs/
+
+# vsc related
+.vscode/
+
