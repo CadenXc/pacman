@@ -1,8 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "Ghost.h"
-
 namespace pacman
 {
 
@@ -24,7 +22,8 @@ class Game
         Game();
         ~Game() {}
 
-        Ghost ghost;
+        void Update();
+        void Render();
 
         static Game* instance;
 };

@@ -1,3 +1,7 @@
+/*This class will be used to create the ghosts in the game,
+I will set the AI pattern for defferent ghosts(pinky,inky,blinky,clyde), so that I
+could not make four different classes for each ghost.
+*/
 #ifndef GHOST_H
 #define GHOST_H
 
@@ -5,8 +9,6 @@
 
 namespace pacman
 {
-    //This class will be inherited by the ghosts
-    //or I can remove this class and just have the four ghost classes.
     class Ghost : public Character
     {
     public:

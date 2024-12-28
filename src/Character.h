@@ -1,17 +1,20 @@
+/*This is a base class for the characters in the game
+
+*/
 #ifndef CHARACTER_H
 #define CHARACTER_H
-/*This is a pure virtual class that will be inherited by the player and the ghosts*/
 #include "Vector2D.h"
 
 namespace pacman
 {
-    // I should review effictive c++ to see if I should make this class abstract
+    // ****** I should review effictive c++ to see if I should make this class abstract
     class Character
     {
     public:
-        Character() = default;
-        Character(Vector2D position) : position(position) {}
-        Character(T x, T y) : position(x, y) {}
+        Character() : position( 0, 0 ), symbol( ' ' ) {};
+        Character( char symbol ) : position( 0, 0 ), symbol( symbol ) {};
+        Character( Vector2D position, char symbol ) : position( position ), symbol( symbol ) {}
+        Character( T x, T y,char symbol ) : position( x, y ), symbol( symbol ) {}
         virtual ~Character() = default;
 
         virtual void Render() = 0;
@@ -21,6 +24,7 @@ namespace pacman
 
     protected:
         Vector2D position;
+        char symbol; // The character that will be rendered on the screen
     };
 }
 #endif
