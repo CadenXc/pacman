@@ -8,4 +8,14 @@ When the ghosts are in defferent modes, I just the set the defferent AI patterns
 #ifndef GHOST_AI_H
 #define GHOST_AI_H
 
+namespace pacman
+{
+    class GhostAI
+    {
+      public:
+
+      private:
+
+    };
+}
 #endif

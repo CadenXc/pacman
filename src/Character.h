@@ -3,10 +3,12 @@
 */
 #ifndef CHARACTER_H
 #define CHARACTER_H
+
 #include "Vector2D.h"
 
 namespace pacman
 {
+    /*
     // ****** I should review effictive c++ to see if I should make this class abstract
     class Character
     {
@@ -22,9 +24,14 @@ namespace pacman
 
         Vector2D GetPosition() const { return position; }
 
+        char GetSymbol() const { return symbol; }
+
     protected:
         Vector2D position;
+
+        //maybe string is better.
         char symbol; // The character that will be rendered on the screen
     };
+*/
 }
 #endif

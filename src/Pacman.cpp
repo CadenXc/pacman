@@ -4,9 +4,11 @@
 
 namespace pacman
 {
+    /*
     Pacman::Pacman()
     : Character()
     {
+        // default represent is 'C'. I think I should use a file to set all the represents like pacman and ghosts.
         symbol = 'C';
         std::cout << "Pacman created" << std::endl;
     }
@@ -36,4 +38,5 @@ namespace pacman
     {
         std::cout << "updating Pacman" << std::endl;
     }
+    */
 }

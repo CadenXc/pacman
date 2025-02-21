@@ -1,16 +1,23 @@
+/*This class is a base class for all game states(Menu, Play)
+*/
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-namespace pacman
+class GameState
 {
-    class GameState
-    {
-    public:
-        virtual void init() = 0;
-        virtual void Run() = 0;
-        virtual void Exit() = 0;
+public:
+	GameState(bool throttle = false);
+	virtual ~GameState() {}
 
-    }
-}
+	virtual void update() = 0;
 
-#endif
+	bool isThrottled() const { return throttle; }
+
+private:
+	// If true, the game state will only update every other frame
+	bool throttle;
+
+	virtual void onResume() {}
+};
+
+#endif // GAMESTATE_H

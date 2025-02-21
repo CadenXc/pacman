@@ -4,10 +4,10 @@
 
 namespace pacman
 {
-    //template <typename T>
 
-
-    //using T = int;
+    //if turn this to a templete: template <typename T>
+    //c++ sytle: using T = int;
+    //This is c style.
     typedef int T;
     class Vector2D
     {

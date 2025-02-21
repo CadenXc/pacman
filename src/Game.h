@@ -1,34 +1,27 @@
 #ifndef GAME_H
 #define GAME_H
 
-namespace pacman
-{
+#include "GameState.h"
+#include <list> 
 
 class Game 
 {
     public:
-        void init();
-        void Run();
-        void Exit();
+        Game(GameState *initialState);
+        ~Game();
 
-        static Game* Instance() {
-            if (instance == nullptr) {
-                instance = new Game();
-            }
-            return instance;
-        }
+        int getFrameCount() const;
+        bool isRunning() const;
+        void popState();
+        void pushState(GameState *state);
+        void quit();
+        void switchState(GameState *state);
+        void update();
 
     private:
-        Game();
-        ~Game() {}
-
-        void Update();
-        void Render();
-
-        static Game* instance;
+        std::list<GameState*> deadStateList;
+        std::list<GameState*> stateStack;
+        int frameCount;
 };
 
-}
-
-#define IGame Game::Instance()
-#endif
+#endif // GAME_H

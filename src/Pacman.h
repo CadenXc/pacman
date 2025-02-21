@@ -7,6 +7,7 @@
 
 namespace pacman
 {
+    /*
     class Pacman : public Character
     {
     public:
@@ -18,6 +19,7 @@ namespace pacman
         void Render() override;
         void Update() override;
     };
+    */
 }
 
 #endif

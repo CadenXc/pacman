@@ -1,38 +1,68 @@
 #include "Game.h"
 
-#include <iostream>
+#include "GameState.h"
 
-namespace pacman
-{
-    Game* Game::instance = nullptr;
 
-    Game::Game() {}
+Game::Game(GameState *initialState) :
+	frameCount(0) {
+	pushState(initialState);
+}
 
-    void Game::init()
-    {
-        std::cout << "game is initializing" << std::endl;
-    }
+Game::~Game() {
+	for (std::list<GameState*>::iterator it = stateStack.begin(); it != stateStack.end(); ++it) {
+		delete *it;
+	}
+	for (std::list<GameState*>::iterator it = deadStateList.begin(); it != deadStateList.end(); ++it) {
+		delete *it;
+	}
+}
 
-    void Game::Run()
-    {
-        std::cout << "game is running" << std::endl;
-        Update();
-        Render();
-    }
+int Game::getFrameCount() const {
+	return frameCount;
+}
 
-    void Game::Exit()
-    {
-        delete instance;
-        std::cout << "game is exiting" << std::endl;
-    }
+bool Game::isRunning() const {
+	return !(stateStack.empty());
+}
 
-    void Game::Update()
-    {
-        std::cout << "game is updating" << std::endl;
-    }
+void Game::popState() {
+	deadStateList.push_back(stateStack.back());
+	stateStack.pop_back();
+	if (!stateStack.empty()) {
+		//stateStack.back()->onResume();
+	}
+}
 
-    void Game::Render()
-    {
-        std::cout << "game is rendering" << std::endl;
-    }
+void Game::pushState(GameState *state) {
+	stateStack.push_back(state);
+}
+
+void Game::quit() {
+	while (!stateStack.empty()) {
+		popState();
+	}
+}
+
+void Game::switchState(GameState *state) {
+	popState();
+	pushState(state);
+}
+
+void Game::update() {
+	stateStack.back()->update();
+
+	for (std::list<GameState*>::iterator it = deadStateList.begin(); it != deadStateList.end(); ++it) {
+		delete* it;
+	}
+	deadStateList.clear();
+
+	if (stateStack.empty()) {
+		return;
+	}
+
+	if (stateStack.back()->isThrottled()) {
+		// FPS_MANAGER.update();
+	}
+
+	frameCount++;
 }

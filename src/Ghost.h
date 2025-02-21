@@ -7,17 +7,16 @@ could not make four different classes for each ghost.
 
 #include "Character.h"
 
-namespace pacman
-{
-    class Ghost : public Character
-    {
+    /*
+  class Ghost : public Character
+  {
     public:
-        Ghost();
-        virtual ~Ghost();
+    Ghost();
+    virtual ~Ghost();
 
-        void Render() override;
-        void Update() override;
-    };
-}
+    void Render() override;
+    void Update() override;
+  };
+  */
 
-#endif
+#endif // GHOST_H
